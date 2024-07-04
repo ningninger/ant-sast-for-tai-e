@@ -1,0 +1,22 @@
+optionsFile: null
+printHelp: false
+classPath: []
+appClassPath:
+  - java-benchmarks/ant-sast-for-tai-e/ant-sast/accuracy/flowSensitive/flowUnReachable/001_F
+mainClass: AssignedByFixedValue_001_F
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: true
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: false
+worldCacheMode: false
+scope: APP
+nativeModel: true
+planFile: null
+analyses:
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml; #dump-ci:true;
+onlyGenPlan: false
+keepResult:
+  - $KEEP-ALL

@@ -1,0 +1,53 @@
+sources:
+  - { kind: call, method: "<SourceUtil: java.lang.String getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.lang.String[] getSource()>", index: "result[*]" }
+  - { kind: call, method: "<SourceUtil: int getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: byte getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.lang.Integer getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.lang.Character getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.lang.Byte getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: byte[] getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: char getSource()>", index: result }
+
+sinks:
+  - { method: "<java.lang.Runtime: java.lang.Process exec(java.lang.String)>", index: 0 }
+  - { method: "<SinkUtil: void sink(java.lang.Object)>", index: 0 }
+  - { method: "<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>", index: 0 }
+  - { method: "<org.sqlite.jdbc3.JDBC3Statement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
+  - { method: "<org.sqlite.jdbc3.JDBC3PreparedStatement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
+  - { method: "<JDBCUtil: void execSql(java.lang.String)>", index: 0 }
+
+
+transfers:
+  #init
+  - { method: "<java.lang.String: void <init>(char[])>", from: 0, to: base }
+  - { method: "<java.lang.String: void <init>(java.lang.String)>", from: 0, to: base }
+  - { method: "<java.lang.String: void <init>(java.lang.StringBuilder)>", from: 0, to: base }
+  - { method: "<java.lang.String: void <init>(java.lang.StringBuffer)>", from: 0, to: base }
+  - { method: "<java.lang.StringBuffer: void <init>(java.lang.String)>", from: 0, to: base }
+  - { method: "<java.lang.StringBuilder: void <init>(java.lang.String)>", from: 0, to: base }
+
+
+  - { method: "<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>", from: 0, to: base }
+  - { method: "<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>", from: 0, to: base }
+  - { method: "<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>", from: 0, to: base }
+  - { method: "<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>", from: 0, to: base }
+
+  #valueOf
+  - { method: "<java.lang.String: java.lang.String valueOf(int)>", from: 0, to: result }
+  - { method: "<java.lang.String: java.lang.String valueOf(char)>", from: 0, to: result }
+  - { method: "<java.lang.String: java.lang.String valueOf(char[])>", from: 0, to: result }
+  - { method: "<java.lang.Byte: java.lang.Byte valueOf(byte)>", from: 0, to: result }
+  - { method: "<java.lang.Integer: java.lang.Integer valueOf(int)>", from: 0, to: result }
+  - { method: "<java.lang.Character: java.lang.Character valueOf(char)>", from: 0, to: result }
+
+  #toString
+  - { method: "<java.lang.StringBuffer: java.lang.String toString()>", from: base, to: result }
+  - { method: "<java.lang.Object: java.lang.String toString()>", from: base, to: result }
+  - { method: "<java.lang.StringBuilder: java.lang.String toString()>", from: base, to: result }
+
+
+  #other
+  - { method: "<java.lang.String: char[] toCharArray()>", from: base, to: result }
+  - { method: "<java.lang.String: java.lang.String toUpperCase()>", from: base, to: result }
+  - { method: "<java.lang.StringBuffer: void getChars(int,int,char[],int)>", from: base, to: 2 }
