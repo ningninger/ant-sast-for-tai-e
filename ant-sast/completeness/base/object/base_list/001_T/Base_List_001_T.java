@@ -15,7 +15,11 @@ public class Base_List_001_T {
         if (cmd == null || CollectionUtils.isEmpty(cmd)) {
             return;
         }
-        Runtime.getRuntime().exec(cmd.get(0));
+        try {
+            Runtime.getRuntime().exec(cmd.get(0));
+        } catch (IOException e) {
+            return;
+        }
     }
 }
 

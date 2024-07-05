@@ -1,3 +1,4 @@
+import java.io.IOException;
 public class Base_StringBuffer_001_T {
     public static void main(String[] args) {
         Base_StringBuffer_001_T obj = new Base_StringBuffer_001_T();
@@ -11,8 +12,12 @@ public class Base_StringBuffer_001_T {
 
         StringBuffer data = new StringBuffer();
         data.append(cmd);
+        try {
+            Runtime.getRuntime().exec(data.toString());
+        } catch (IOException e) {
+            return;
 
-        Runtime.getRuntime().exec(data.toString());
+        }
 
     }
 }

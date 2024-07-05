@@ -1,3 +1,4 @@
+import java.io.IOException;
 public class Base_StringArray_001_T {
 
     public static void main(String[] args) {
@@ -9,8 +10,12 @@ public class Base_StringArray_001_T {
         if (cmd == null || cmd.length < 1) {
             return;
         }
-
-        Runtime.getRuntime().exec(cmd[0]);
+        try {
+            Runtime.getRuntime().exec(cmd[0]);
+        }
+        catch (IOException e) {
+            return;
+        }
     }
 }
 

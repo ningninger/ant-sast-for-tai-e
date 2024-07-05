@@ -242,20 +242,27 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 #### object
 
-| 测试文件               | 测试结果      | 错误原因     |
-| ---------------------- | ------------- | ------------ |
-| Base_ArrayAccess_001_T | N             | 无法填写sink |
-| Base_ArrayAccess_002_T | N             |              |
-| Base_ArrayAccess_003_T | E             | 报错未解决   |
-| Base_ArrayAccess_004_T | T             |              |
-| Base_Byte_001_T        | T（transfer） |              |
-| Base_Byte_002_T        | T（transfer） |              |
-| Base_ByteArray_001_T   | T             |              |
-| Base_Char_001_T        | T（transfer） |              |
-| Base_Char_002_T        | T（transfer） |              |
-| Base_CharArray_001_T   | T             |              |
-|                        |               |              |
-|                        |               |              |
-|                        |               |              |
-|                        |               |              |
+| 测试文件                 | 测试结果              | 错误原因                 |
+| ------------------------ | --------------------- | ------------------------ |
+| Base_ArrayAccess_001_T   | N                     | 无法填写sink             |
+| Base_ArrayAccess_002_T   | N                     |                          |
+| Base_ArrayAccess_003_T   | E                     | 报错未解决               |
+| Base_ArrayAccess_004_T   | T                     |                          |
+| Base_Byte_001_T          | T（transfer，config） |                          |
+| Base_Byte_002_T          | T（transfer，config） |                          |
+| Base_ByteArray_001_T     | T                     |                          |
+| Base_Char_001_T          | T（transfer，config） |                          |
+| Base_Char_002_T          | T（transfer，config） |                          |
+| Base_CharArray_001_T     | T                     |                          |
+| Base_Integer_001_T       | T（transfer）         |                          |
+| Base_List_001_T          | T（transfer）         | 框架导入                 |
+| Base_Long_001_T          | T（transfer，config） |                          |
+| Base_Long_001_T          | T（transfer，config） |                          |
+| Base_Map_001_T           | T                     |                          |
+| Base_Queue_001_T         | T（transfer）         | 框架导入                 |
+| Base_Set_001_T           | T（transfer）         | 框架导入                 |
+| Base_String_001_T        | T                     |                          |
+| Base_StringArray_001_T   | T（transfer）         | 数组无法进行污染数组访问 |
+| Base_StringBuffer_001_T  | T（transfer）         |                          |
+| Base_StringBuilder_001_T | T（transfer）         |                          |
 

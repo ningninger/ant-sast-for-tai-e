@@ -1,3 +1,4 @@
+import java.io.IOException;
 public class Base_StringBuilder_001_T {
 
     public static void main(String[] args) {
@@ -13,7 +14,12 @@ public class Base_StringBuilder_001_T {
         StringBuilder data = new StringBuilder();
         data.append(cmd);
 
-        Runtime.getRuntime().exec(data.toString());
+        try {
+            Runtime.getRuntime().exec(data.toString());
+        } catch (IOException e) {
+            return;
+
+        }
 
     }
 }

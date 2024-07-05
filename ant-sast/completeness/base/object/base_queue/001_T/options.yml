@@ -2,7 +2,7 @@ optionsFile: null
 printHelp: false
 classPath: []
 appClassPath:
-  - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/taintKind/base_queue/001_T
+  - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/object/base_queue/001_T
 mainClass: Base_Queue_001_T
 inputClasses: []
 javaVersion: 8

@@ -1,7 +1,7 @@
-public class Base_Long_001_T {
+public class Base_Long_002_T {
 
     public static void main(String[] args) {
-        Base_Long_001_T obj = new Base_Long_001_T();
+        Base_Long_002_T obj = new Base_Long_002_T();
         obj.testcase(SourceUtil.getSource());
         //obj.testcase(null);
     }

@@ -13,7 +13,6 @@ public class Base_Set_001_T {
     public static void main(String[] args) {
         Base_Set_001_T obj = new Base_Set_001_T();
         obj.testcase(SourceUtil.getSource());
-        //obj.testcase(null);
     }
 
 

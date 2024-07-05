@@ -2,7 +2,6 @@ public class Base_Integer_001_T {
     public static void main(String[] args) {
         Base_Integer_001_T obj = new Base_Integer_001_T();
         obj.testcase(SourceUtil.getSource());
-        //obj.testcase(null);
     }
 
     public void testcase(Integer cmd) {

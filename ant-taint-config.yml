@@ -8,6 +8,11 @@ sources:
   - { kind: call, method: "<SourceUtil: java.lang.Byte getSource()>", index: result }
   - { kind: call, method: "<SourceUtil: byte[] getSource()>", index: result }
   - { kind: call, method: "<SourceUtil: char getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: long getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.lang.Long getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.util.HashMap getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.util.Map getSource()>", index: result }
+  - { kind: call, method: "<SourceUtil: java.util.List getSource()>", index: result }
 
 sinks:
   - { method: "<java.lang.Runtime: java.lang.Process exec(java.lang.String)>", index: 0 }
@@ -40,6 +45,7 @@ transfers:
   - { method: "<java.lang.Byte: java.lang.Byte valueOf(byte)>", from: 0, to: result }
   - { method: "<java.lang.Integer: java.lang.Integer valueOf(int)>", from: 0, to: result }
   - { method: "<java.lang.Character: java.lang.Character valueOf(char)>", from: 0, to: result }
+  - { method: "<java.lang.Long: java.lang.Long valueOf(int)>", from: 0, to: result }
 
   #toString
   - { method: "<java.lang.StringBuffer: java.lang.String toString()>", from: base, to: result }
@@ -51,3 +57,4 @@ transfers:
   - { method: "<java.lang.String: char[] toCharArray()>", from: base, to: result }
   - { method: "<java.lang.String: java.lang.String toUpperCase()>", from: base, to: result }
   - { method: "<java.lang.StringBuffer: void getChars(int,int,char[],int)>", from: base, to: 2 }
+  - { method: "<java.util.Set: void <init>(java.util.List)>", from: 0, to: base }

@@ -8,8 +8,6 @@ public class Base_Map_001_T {
     public static void main(String[] args) {
         Base_Map_001_T obj = new Base_Map_001_T();
         obj.testcase(SourceUtil.getSource());
-        //obj.testcase(null);
-        //obj.testcase(new HashMap<String, String>());
     }
 
 
