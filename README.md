@@ -266,3 +266,6 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 | Base_StringBuffer_001_T  | T（transfer）         |                          |
 | Base_StringBuilder_001_T | T（transfer）         |                          |
 
+
+
+除去第三方库报错，共91个测试，其中7个失败，23个可以直接测， 61个需要transfer或修改原生配置
