@@ -32,7 +32,7 @@ transfers:
   - { method: "<java.lang.StringBuffer: void <init>(java.lang.String)>", from: 0, to: base }
   - { method: "<java.lang.StringBuilder: void <init>(java.lang.String)>", from: 0, to: base }
 
-
+  #append
   - { method: "<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.Object)>", from: 0, to: base }
   - { method: "<java.lang.StringBuffer: java.lang.StringBuffer append(java.lang.String)>", from: 0, to: base }
   - { method: "<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>", from: 0, to: base }
@@ -58,3 +58,13 @@ transfers:
   - { method: "<java.lang.String: java.lang.String toUpperCase()>", from: base, to: result }
   - { method: "<java.lang.StringBuffer: void getChars(int,int,char[],int)>", from: base, to: 2 }
   - { method: "<java.util.Set: void <init>(java.util.List)>", from: 0, to: base }
+
+  # substring
+  - { method: "<java.lang.String: java.lang.String substring(int,int)>", from: base, to: result }
+  - { method: "<java.lang.String: java.lang.String substring(int)>", from: base, to: result }
+
+  # http
+  - { method: "<java.net.URI: void <init>(java.lang.String)>", from: 0, to: base }
+  - { method: "<org.apache.http.client.methods.HttpGet: void <init>(java.net.URI)>", from: 0, to: base }
+
+  #hutools

@@ -1,3 +1,6 @@
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class Statement_CastStatement_002_T {
 
     public static void main(String[] args) {
@@ -6,10 +9,14 @@ public class Statement_CastStatement_002_T {
     }
 
     public void testcase1(String url) {
-        URL realUrl = new URL(url);
-        HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
-        connection.setRequestMethod("GET");
-        connection.getResponseMessage();
+        try {
+            URL realUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
+            connection.setRequestMethod("GET");
+            connection.getResponseMessage();
+        } catch (Exception e) {
+            return;
+        }
     }
 }
 

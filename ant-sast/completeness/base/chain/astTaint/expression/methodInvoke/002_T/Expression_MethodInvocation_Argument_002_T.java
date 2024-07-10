@@ -8,8 +8,8 @@ public class Expression_MethodInvocation_Argument_002_T {
     }
 
     public void testcase1(String cmd) {
-        HttpRequest.post("http://localhost:39100/ataint/case00124/2?cmd="+cmd)
-                .execute();
+        HttpRequest request = HttpRequest.post("http://localhost:39100/ataint/case00124/2?cmd=" + cmd);
+        request.execute();
     }
 }
 

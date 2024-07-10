@@ -2,8 +2,8 @@ optionsFile: null
 printHelp: false
 classPath: []
 appClassPath:
-  - java-benchmarks/ant-sast-for-tai-e/ant-sast/accuracy/fieldSensitive/propertyIsTaintOrNot_Queue_Lambda/002_F
-mainClass: PropertyIsTaintOrNot_Queue_Lambda_002_F
+  - java-benchmarks/ant-sast-for-tai-e/ant-sast/accuracy/fieldSensitive/propertyIsTaintOrNot_Queue_Lambda/002_F/test-1.0-SNAPSHOT-jar-with-dependencies.jar
+mainClass: org.example.PropertyIsTaintOrNot_Queue_Lambda_002_F
 inputClasses: []
 javaVersion: 8
 prependJVM: false
@@ -16,7 +16,8 @@ scope: APP
 nativeModel: true
 planFile: null
 analyses:
-  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml; #dump-ci:true;
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-sast/accuracy/fieldSensitive/propertyIsTaintOrNot_Queue_Lambda/002_F/ant-taint-config.yml; #dump-ci:true;
+  ir-dumper: ""
 onlyGenPlan: false
 keepResult:
   - $KEEP-ALL

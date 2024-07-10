@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Queue;
 
 import com.google.common.collect.Queues;
@@ -24,6 +23,7 @@ public class PropertyIsTaintOrNot_Queue_Lambda_002_F {
                 try {
                     Runtime.getRuntime().exec(e);
                 } catch (IOException ex) {
+                    return;
                 }
             }
         });

@@ -24,13 +24,15 @@ public class PropertyIsTaintOrNot_Map_002_F {
     }
 
     public void testcase(String url) {
-        Map<String, String> paramMap = new HashMap<>();
-        paramMap.put("url", url);
-        paramMap.put("method", "GET");
-        HttpUtil.doGet(paramMap.get("method"));
+        try {
+            Map<String, String> paramMap = new HashMap<String, String>();
+            paramMap.put("url", url);
+            paramMap.put("method", "GET");
+            HttpUtil.doGet(paramMap.get("method"));
+        } catch (Exception e) {
+            return;
+        }
     }
-
-
 }
 
 class SourceUtil {
@@ -99,7 +101,7 @@ class HttpUtil {
             httpPost.setConfig(requestConfig);
             // 创建参数列表
             if (param != null) {
-                List<NameValuePair> paramList = new ArrayList<>();
+                List<NameValuePair> paramList = new ArrayList<NameValuePair>();
                 for (String key : param.keySet()) {
                     paramList.add(new BasicNameValuePair(key, param.get(key)));
                 }

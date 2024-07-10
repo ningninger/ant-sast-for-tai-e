@@ -122,17 +122,18 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 #### fieldSensitive
 
-|                 测试文件                  | 测试结果 |       错误原因       |
-| :---------------------------------------: | :------: | :------------------: |
-| PropertyIsTaintOrNot_CharacterLevel_001_T |    E     | 报错暂未解决（下同） |
-|      PropertyIsTaintOrNot_Map_001_T       |    E     |                      |
-|      PropertyIsTaintOrNot_Map_002_F       |    E     |                      |
-|    PropertyIsTaintOrNot_MultiMap_001_T    |    E     |                      |
-|    PropertyIsTaintOrNot_MultiMap_002_F    |    E     |                      |
-|     PropertyIsTaintOrNot_Object_001_T     |    T     |                      |
-|     PropertyIsTaintOrNot_Object_002_F     |    T     |                      |
-|  PropertyIsTaintOrNot_Queue_Lambda_001_T  |    E     | 报错暂未解决（下同） |
-|  PropertyIsTaintOrNot_Queue_Lambda_002_F  |    E     |                      |
+|                 测试文件                  |   测试结果    |                           错误原因                           |
+| :---------------------------------------: | :-----------: | :----------------------------------------------------------: |
+| PropertyIsTaintOrNot_CharacterLevel_001_T | T（transfer） |                                                              |
+| PropertyIsTaintOrNot_CharacterLevel_001_T |       F       | 测试集要求字符串合并之后不是污点部分字符串取子串后仍然不是污点 |
+|      PropertyIsTaintOrNot_Map_001_T       | T（transfer） |                                                              |
+|      PropertyIsTaintOrNot_Map_002_F       |       F       |               对哈希表不同的键值拿出来应该不同               |
+|    PropertyIsTaintOrNot_MultiMap_001_T    | T（transfer） |                                                              |
+|    PropertyIsTaintOrNot_MultiMap_002_F    |       F       | 感觉不应该错啊，但是不知道为啥，后面用更严格的上下文来跑一下 |
+|     PropertyIsTaintOrNot_Object_001_T     |       T       |                                                              |
+|     PropertyIsTaintOrNot_Object_002_F     |       T       |                                                              |
+|  PropertyIsTaintOrNot_Queue_Lambda_001_T  |       T       |                                                              |
+|  PropertyIsTaintOrNot_Queue_Lambda_002_F  |       F       |                      还是流不敏感的问题                      |
 
 
 
@@ -174,27 +175,29 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 ###### expression
 
-|                      测试文件                      |       测试结果        |               错误原因               |
-| :------------------------------------------------: | :-------------------: | :----------------------------------: |
-|       Expression_AssignmentExpression_001_T        |           F           | 按理说有污点流，不知道为什么（暂定） |
-|       Expression_AssignmentExpression_002_T        |           T           |                                      |
-|           Expression_BitOperation_001_T            | T（transfer，config） |                                      |
-|       Expression_CallExpression_Array_001_T        |     T（transfer）     |                                      |
-|        Expression_ClassInstance_Infix_001_T        |      T(transfer)      |                                      |
-|          Expression_InfixExpression_001_T          |      T(transfer)      |                                      |
-|         Expression_LambdaExpression_001_T          |           E           |             报错未被解决             |
-| Expression_MethodInvocation_MethodInvocation_001_T |     T（transfer）     |                                      |
-|     Expression_MethodInvocation_Argument_001_T     |     T（transfer）     |                                      |
-|         Expression_MethodInvocation_001_T          |     T（transfer）     |                                      |
-| Expression_MethodInvocation_InfixExpression_001_T  |           E           |             报错未被解决             |
-|     Expression_MethodInvocation_Argument_002_T     |           E           |             报错未被解决             |
-|        Expression_NewExpression_Array_001_T        |           E           |             报错未被解决             |
-|       Expression_NewExpression_Package_001_T       |           E           |              报错未解决              |
-|         Expression_PostfixExpression_001_T         | T（transfer，config） |                                      |
-|         Expression_PrefixExpression_001_T          | T（transfer，config） |                                      |
-|            Expression_Reflection_001_T             |           F           |             需要反射配置             |
-|          Expression_TernaryOperator_001_T          |           E           |              报错未解决              |
-|              this基本支持（后续添加）              |                       |                                      |
+|                      测试文件                      |       测试结果        |                  错误原因                  |
+| :------------------------------------------------: | :-------------------: | :----------------------------------------: |
+|       Expression_AssignmentExpression_001_T        |           T           |                                            |
+|       Expression_AssignmentExpression_002_T        |           T           |                                            |
+|           Expression_BitOperation_001_T            | T（transfer，config） |                                            |
+|       Expression_CallExpression_Array_001_T        |     T（transfer）     |                                            |
+|        Expression_ClassInstance_Infix_001_T        |      T(transfer)      |                                            |
+|          Expression_InfixExpression_001_T          |      T(transfer)      |                                            |
+|         Expression_LambdaExpression_001_T          |           T           |                                            |
+| Expression_MethodInvocation_MethodInvocation_001_T |     T（transfer）     |                                            |
+|     Expression_MethodInvocation_Argument_001_T     |     T（transfer）     |                                            |
+|         Expression_MethodInvocation_001_T          |     T（transfer）     |                                            |
+| Expression_MethodInvocation_InfixExpression_001_T  |     T（transfer）     |                                            |
+|     Expression_MethodInvocation_Argument_002_T     |           F           |          找不到sink，提出了issue           |
+|        Expression_NewExpression_Array_001_T        |           F           | 将数组拆开重组，对新数组进行操作污点会消失 |
+|       Expression_NewExpression_Package_001_T       |           T           |                                            |
+|         Expression_PostfixExpression_001_T         | T（transfer，config） |                                            |
+|         Expression_PrefixExpression_001_T          | T（transfer，config） |                                            |
+|            Expression_Reflection_001_T             |     T（refl.log）     |                                            |
+|          Expression_TernaryOperator_001_T          |     T（transfer）     |                  打包处理                  |
+|          Expression_ThisExpression_001_T           |     T（transfer）     |                  打包处理                  |
+|     Expression_ThisExpression_Anonymous_001_T      |     T（transfer）     |                  打包处理                  |
+|       Expression_ThisExpression_Lambda_001_T       |     T（transfer）     |                  打包处理                  |
 
 
 
@@ -202,17 +205,17 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 ###### statement
 
-|                   测试文件                   |   测试结果    |      错误原因      |
-| :------------------------------------------: | :-----------: | :----------------: |
-|        Statement_CastStatement_001_T         |       T       |                    |
-|        Statement_CastStatement_002_T         |       F       | 不知道sink填写什么 |
-|         Statement_DoStatement_001_T          | T（transfer） |                    |
-|         Statement_ForStatement_001_T         | T（transfer） |                    |
-|         Statement_IfStatement_001_T          |       E       |     报错未解决     |
-|       Statement_SwitchStatement_001_T        |       E       |     报错未解决     |
-| Statement_VariableDeclarationStatement_001_T | T（transfer） |                    |
-|        Statement_WhileStatement_001_T        | T（transfer） |                    |
-|                                              |               |                    |
+|                   测试文件                   |   测试结果    |                 错误原因                 |
+| :------------------------------------------: | :-----------: | :--------------------------------------: |
+|        Statement_CastStatement_001_T         |       T       |                                          |
+|        Statement_CastStatement_002_T         |       F       |      不知道sink填写什么，去提issue       |
+|         Statement_DoStatement_001_T          | T（transfer） |                                          |
+|         Statement_ForStatement_001_T         | T（transfer） |                                          |
+|         Statement_IfStatement_001_T          |       T       |                                          |
+|       Statement_SwitchStatement_001_T        |       F       | 出现编译优化后的字符串拼接，transfer失效 |
+| Statement_VariableDeclarationStatement_001_T | T（transfer） |                                          |
+|        Statement_WhileStatement_001_T        | T（transfer） |                                          |
+|                                              |               |                                          |
 
 
 
@@ -244,9 +247,9 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 | 测试文件                 | 测试结果              | 错误原因                 |
 | ------------------------ | --------------------- | ------------------------ |
-| Base_ArrayAccess_001_T   | N                     | 无法填写sink             |
-| Base_ArrayAccess_002_T   | N                     |                          |
-| Base_ArrayAccess_003_T   | E                     | 报错未解决               |
+| Base_ArrayAccess_001_T   | T                     |                          |
+| Base_ArrayAccess_002_T   | T                     |                          |
+| Base_ArrayAccess_003_T   | T                     |                          |
 | Base_ArrayAccess_004_T   | T                     |                          |
 | Base_Byte_001_T          | T（transfer，config） |                          |
 | Base_Byte_002_T          | T（transfer，config） |                          |
@@ -278,6 +281,15 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 + 常量赋值的sanitizer，新变量的sanitizer
 
 
+
+
+
+> 测试报错：
+>
+> + 依赖包不全
+> + 前端报错
+>   + `Map<String, String> paramMap = new HashMap<>();`不可以，必须补全类型
+>   + `Map<String, String> paramMap = new HashMap<String, String>();`
 
 
 

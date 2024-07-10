@@ -30,7 +30,7 @@ class SourceUtil {
     }
 }
 
-public class CmdUtil {
+class CmdUtil {
 
     public static void run(String cmd) {
         try {

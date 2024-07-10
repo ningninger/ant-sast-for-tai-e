@@ -22,7 +22,7 @@ public class PropertyIsTaintOrNot_CharacterLevel_002_F {
         obj.testcase(SourceUtil.getSource());
     }
 
-    public void testcase(String domain) {
+    public void testcase(String param) {
         try {
             String domain = "www.fixdomain.com/a";
             String url = domain + param;
@@ -102,11 +102,11 @@ class HttpUtil {
             httpPost.setConfig(requestConfig);
             // 创建参数列表
             if (param != null) {
-                List<NameValuePair> paramList = new ArrayList<>();
+                List<NameValuePair> paramList = new ArrayList<NameValuePair>();
                 for (String key : param.keySet()) {
                     paramList.add(new BasicNameValuePair(key, param.get(key)));
                 }
-                // 模拟表单
+               // 模拟表单
                 UrlEncodedFormEntity entity = new UrlEncodedFormEntity(paramList, "utf-8");
                 httpPost.setEntity(entity);
             }

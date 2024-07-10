@@ -23,14 +23,19 @@ public class PropertyIsTaintOrNot_MultiMap_001_T {
         obj.testcase(SourceUtil.getSource());
     }
 
-    public void testcase(String url)
-    {
-        Map<String, String> paramMap = new HashMap<>();
-        XCmdObject xCmdObject = new XCmdObject();
-        paramMap.put("url", url);
-        paramMap.put("method", "GET");
-        xCmdObject.setModelMap(paramMap);
-        HttpUtil.doGet(xCmdObject.getModelMap().get("url"));
+    public void testcase(String url) {
+
+        try {
+            Map<String, String> paramMap = new HashMap<String, String>();
+            XCmdObject xCmdObject = new XCmdObject();
+            paramMap.put("url", url);
+            paramMap.put("method", "GET");
+            xCmdObject.setModelMap(paramMap);
+            HttpUtil.doGet(xCmdObject.getModelMap().get("url"));
+        } catch (Exception e) {
+            return;
+        }
+
     }
 
 
@@ -105,7 +110,7 @@ class HttpUtil {
             httpPost.setConfig(requestConfig);
             // 创建参数列表
             if (param != null) {
-                List<NameValuePair> paramList = new ArrayList<>();
+                List<NameValuePair> paramList = new ArrayList<NameValuePair>();
                 for (String key : param.keySet()) {
                     paramList.add(new BasicNameValuePair(key, param.get(key)));
                 }

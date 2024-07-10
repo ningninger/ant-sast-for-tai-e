@@ -3,6 +3,7 @@ printHelp: false
 classPath: []
 appClassPath:
   - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/methodInvoke/002_T
+  - java-benchmarks/ant-sast-for-tai-e/jar/hutool/hutool-all-5.4.2.jar
 mainClass: Expression_MethodInvocation_Argument_002_T
 inputClasses: []
 javaVersion: 8

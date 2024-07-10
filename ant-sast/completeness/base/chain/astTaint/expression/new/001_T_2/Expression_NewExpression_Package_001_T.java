@@ -1,21 +1,3 @@
-public class Expression_NewExpression_Package_001_T {
-
-    public static void main(String[] args) {
-        Expression_NewExpression_Package_001_T obj = new Expression_NewExpression_Package_001_T();
-        obj.testcase1(SourceUtil.getSource());
-    }
-
-    public void testcase1(String cmd) {
-        String result = HttpUtil.doGet(url);
-    }
-}
-
-class SourceUtil {
-    public static String getSource() {
-        return "taint";
-    }
-}
-
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -33,7 +15,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HttpUtil {
+public class Expression_NewExpression_Package_001_T {
+
+    public static void main(String[] args) {
+        Expression_NewExpression_Package_001_T obj = new Expression_NewExpression_Package_001_T();
+        obj.testcase1(SourceUtil.getSource());
+    }
+
+    public void testcase1(String cmd) {
+        try {
+            String result = HttpUtil.doGet(cmd);
+        } catch (Exception e) {
+            return;
+        }
+
+    }
+}
+
+class SourceUtil {
+    public static String getSource() {
+        return "taint";
+    }
+}
+
+
+
+class HttpUtil {
 
     public static String doGet(String url, Map<String, String> param) throws Exception {
 
@@ -93,7 +100,7 @@ public class HttpUtil {
             httpPost.setConfig(requestConfig);
             // 创建参数列表
             if (param != null) {
-                List<NameValuePair> paramList = new ArrayList<>();
+                List<NameValuePair> paramList = new ArrayList<NameValuePair>();
                 for (String key : param.keySet()) {
                     paramList.add(new BasicNameValuePair(key, param.get(key)));
                 }

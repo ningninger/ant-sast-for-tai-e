@@ -2,8 +2,8 @@ optionsFile: null
 printHelp: false
 classPath: []
 appClassPath:
-  - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/ternary/001_T
-mainClass: Expression_TernaryOperator_001_T
+  - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/ternary/001_T/test-1.0-SNAPSHOT-jar-with-dependencies.jar
+mainClass: org.example.Expression_TernaryOperator_001_T
 inputClasses: []
 javaVersion: 8
 prependJVM: false
@@ -16,7 +16,7 @@ scope: APP
 nativeModel: true
 planFile: null
 analyses:
-  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml; #dump-ci:true;
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/ternary/001_T/ant-taint-config.yml; #dump-ci:true;
 onlyGenPlan: false
 keepResult:
   - $KEEP-ALL

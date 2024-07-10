@@ -1,0 +1,26 @@
+optionsFile: null
+printHelp: false
+classPath: []
+appClassPath:
+  - java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/new/001_T_2
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/commons-codec-1.6.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/commons-logging-1.1.3.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/httpclient-4.3.6.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/httpcore-4.3.3.jar
+mainClass: Expression_NewExpression_Package_001_T
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: true
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: false
+worldCacheMode: false
+scope: APP
+nativeModel: true
+planFile: null
+analyses:
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml; #dump-ci:true;
+onlyGenPlan: false
+keepResult:
+  - $KEEP-ALL

@@ -1,0 +1,15 @@
+sources:
+  - { kind: call, method: "<org.example.SourceUtil: java.lang.String getSource()>", index: result }
+
+
+sinks:
+  - { method: "<java.lang.Runtime: java.lang.Process exec(java.lang.String)>", index: 0 }
+  - { method: "<SinkUtil: void sink(java.lang.Object)>", index: 0 }
+  - { method: "<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>", index: 0 }
+  - { method: "<org.sqlite.jdbc3.JDBC3Statement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
+  - { method: "<org.sqlite.jdbc3.JDBC3PreparedStatement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
+  - { method: "<JDBCUtil: void execSql(java.lang.String)>", index: 0 }
+
+
+transfers:
+  - { method: "<org.apache.http.client.methods.HttpGet: void <init>(java.lang.String)>", from: 0, to: base }

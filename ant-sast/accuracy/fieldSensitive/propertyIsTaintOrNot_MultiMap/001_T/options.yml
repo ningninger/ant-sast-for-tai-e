@@ -3,6 +3,10 @@ printHelp: false
 classPath: []
 appClassPath:
   - java-benchmarks/ant-sast-for-tai-e/ant-sast/accuracy/fieldSensitive/propertyIsTaintOrNot_MultiMap/001_T
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/commons-codec-1.6.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/commons-logging-1.1.3.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/httpclient-4.3.6.jar
+  - java-benchmarks/ant-sast-for-tai-e/jar/http/httpcore-4.3.3.jar
 mainClass: PropertyIsTaintOrNot_MultiMap_001_T
 inputClasses: []
 javaVersion: 8

@@ -16,7 +16,8 @@ scope: APP
 nativeModel: true
 planFile: null
 analyses:
-  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml; #dump-ci:true;
+  pta: cs:ci;implicit-entries:false;distinguish-string-constants:null;reflection-inference:solar;taint-config:java-benchmarks/ant-sast-for-tai-e/ant-taint-config.yml;reflection-log:java-benchmarks/ant-sast-for-tai-e/ant-sast/completeness/base/chain/astTaint/expression/reflection/001_T/refl.log; #dump-ci:true;
+  ir-dumper: ""
 onlyGenPlan: false
 keepResult:
   - $KEEP-ALL
