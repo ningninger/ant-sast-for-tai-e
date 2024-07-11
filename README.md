@@ -188,7 +188,7 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 |     Expression_MethodInvocation_Argument_001_T     |     T（transfer）     |                                            |
 |         Expression_MethodInvocation_001_T          |     T（transfer）     |                                            |
 | Expression_MethodInvocation_InfixExpression_001_T  |     T（transfer）     |                                            |
-|     Expression_MethodInvocation_Argument_002_T     |           F           |          找不到sink，提出了issue           |
+|     Expression_MethodInvocation_Argument_002_T     |     T（transfer）     |                                            |
 |        Expression_NewExpression_Array_001_T        |           F           | 将数组拆开重组，对新数组进行操作污点会消失 |
 |       Expression_NewExpression_Package_001_T       |           T           |                                            |
 |         Expression_PostfixExpression_001_T         | T（transfer，config） |                                            |
@@ -205,17 +205,17 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 ###### statement
 
-|                   测试文件                   |   测试结果    |           错误原因            |
-| :------------------------------------------: | :-----------: | :---------------------------: |
-|        Statement_CastStatement_001_T         |       T       |                               |
-|        Statement_CastStatement_002_T         |       F       | 不知道sink填写什么，去提issue |
-|         Statement_DoStatement_001_T          | T（transfer） |                               |
-|         Statement_ForStatement_001_T         | T（transfer） |                               |
-|         Statement_IfStatement_001_T          |       T       |                               |
-|       Statement_SwitchStatement_001_T        | T（transfer） |                               |
-| Statement_VariableDeclarationStatement_001_T | T（transfer） |                               |
-|        Statement_WhileStatement_001_T        | T（transfer） |                               |
-|                                              |               |                               |
+|                   测试文件                   |   测试结果    | 错误原因 |
+| :------------------------------------------: | :-----------: | :------: |
+|        Statement_CastStatement_001_T         |       T       |          |
+|        Statement_CastStatement_002_T         | T（transfer） |          |
+|         Statement_DoStatement_001_T          | T（transfer） |          |
+|         Statement_ForStatement_001_T         | T（transfer） |          |
+|         Statement_IfStatement_001_T          |       T       |          |
+|       Statement_SwitchStatement_001_T        | T（transfer） |          |
+| Statement_VariableDeclarationStatement_001_T | T（transfer） |          |
+|        Statement_WhileStatement_001_T        | T（transfer） |          |
+|                                              |               |          |
 
 
 
@@ -271,7 +271,7 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 
 
-共115个测试，其中12个失败，31个可以直接测， 72个需要transfer或修改原生配置
+共115个测试，其中10个失败，31个可以直接测， 74个需要transfer或修改原生配置
 
 失败样例：
 
@@ -279,8 +279,7 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 + 常量消毒（3）
 + 数组重组（1）
 + 容器（3）
-+ 其他（3）
-  + issue
++ 其他（1）
   + 上下文不足
 
 

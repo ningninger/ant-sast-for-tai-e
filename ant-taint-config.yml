@@ -21,6 +21,8 @@ sinks:
   - { method: "<org.sqlite.jdbc3.JDBC3Statement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
   - { method: "<org.sqlite.jdbc3.JDBC3PreparedStatement: java.sql.ResultSet executeQuery(java.lang.String)>", index: 0 }
   - { method: "<JDBCUtil: void execSql(java.lang.String)>", index: 0 }
+  - { method: "<cn.hutool.http.HttpRequest: cn.hutool.http.HttpRequest post(java.lang.String)>", index: 0 }
+  - { method: "<java.net.URL: java.net.URLConnection openConnection()>", index: base }
 
 
 transfers:
@@ -66,5 +68,6 @@ transfers:
   # http
   - { method: "<java.net.URI: void <init>(java.lang.String)>", from: 0, to: base }
   - { method: "<org.apache.http.client.methods.HttpGet: void <init>(java.net.URI)>", from: 0, to: base }
+  - { method: "<java.net.URL: void <init>(java.lang.String)>", from: 0, to: base }
 
   #hutools
