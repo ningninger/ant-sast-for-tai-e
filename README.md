@@ -133,7 +133,7 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 |     PropertyIsTaintOrNot_Object_001_T     |       T       |                                                              |
 |     PropertyIsTaintOrNot_Object_002_F     |       T       |                                                              |
 |  PropertyIsTaintOrNot_Queue_Lambda_001_T  |       T       |                                                              |
-|  PropertyIsTaintOrNot_Queue_Lambda_002_F  |       F       |                      还是流不敏感的问题                      |
+|  PropertyIsTaintOrNot_Queue_Lambda_002_F  |       F       |                           容器问题                           |
 
 
 
@@ -194,10 +194,10 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 |         Expression_PostfixExpression_001_T         | T（transfer，config） |                                            |
 |         Expression_PrefixExpression_001_T          | T（transfer，config） |                                            |
 |            Expression_Reflection_001_T             |     T（refl.log）     |                                            |
-|          Expression_TernaryOperator_001_T          |     T（transfer）     |                  打包处理                  |
-|          Expression_ThisExpression_001_T           |     T（transfer）     |                  打包处理                  |
-|     Expression_ThisExpression_Anonymous_001_T      |     T（transfer）     |                  打包处理                  |
-|       Expression_ThisExpression_Lambda_001_T       |     T（transfer）     |                  打包处理                  |
+|          Expression_TernaryOperator_001_T          |     T（transfer）     |                                            |
+|          Expression_ThisExpression_001_T           |     T（transfer）     |                                            |
+|     Expression_ThisExpression_Anonymous_001_T      |     T（transfer）     |                                            |
+|       Expression_ThisExpression_Lambda_001_T       |     T（transfer）     |                                            |
 
 
 
@@ -205,17 +205,17 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 ###### statement
 
-|                   测试文件                   |   测试结果    |                 错误原因                 |
-| :------------------------------------------: | :-----------: | :--------------------------------------: |
-|        Statement_CastStatement_001_T         |       T       |                                          |
-|        Statement_CastStatement_002_T         |       F       |      不知道sink填写什么，去提issue       |
-|         Statement_DoStatement_001_T          | T（transfer） |                                          |
-|         Statement_ForStatement_001_T         | T（transfer） |                                          |
-|         Statement_IfStatement_001_T          |       T       |                                          |
-|       Statement_SwitchStatement_001_T        |       F       | 出现编译优化后的字符串拼接，transfer失效 |
-| Statement_VariableDeclarationStatement_001_T | T（transfer） |                                          |
-|        Statement_WhileStatement_001_T        | T（transfer） |                                          |
-|                                              |               |                                          |
+|                   测试文件                   |   测试结果    |           错误原因            |
+| :------------------------------------------: | :-----------: | :---------------------------: |
+|        Statement_CastStatement_001_T         |       T       |                               |
+|        Statement_CastStatement_002_T         |       F       | 不知道sink填写什么，去提issue |
+|         Statement_DoStatement_001_T          | T（transfer） |                               |
+|         Statement_ForStatement_001_T         | T（transfer） |                               |
+|         Statement_IfStatement_001_T          |       T       |                               |
+|       Statement_SwitchStatement_001_T        | T（transfer） |                               |
+| Statement_VariableDeclarationStatement_001_T | T（transfer） |                               |
+|        Statement_WhileStatement_001_T        | T（transfer） |                               |
+|                                              |               |                               |
 
 
 
@@ -245,40 +245,45 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 #### object
 
-| 测试文件                 | 测试结果              | 错误原因                 |
-| ------------------------ | --------------------- | ------------------------ |
-| Base_ArrayAccess_001_T   | T                     |                          |
-| Base_ArrayAccess_002_T   | T                     |                          |
-| Base_ArrayAccess_003_T   | T                     |                          |
-| Base_ArrayAccess_004_T   | T                     |                          |
-| Base_Byte_001_T          | T（transfer，config） |                          |
-| Base_Byte_002_T          | T（transfer，config） |                          |
-| Base_ByteArray_001_T     | T                     |                          |
-| Base_Char_001_T          | T（transfer，config） |                          |
-| Base_Char_002_T          | T（transfer，config） |                          |
-| Base_CharArray_001_T     | T                     |                          |
-| Base_Integer_001_T       | T（transfer）         |                          |
-| Base_List_001_T          | T（transfer）         | 框架导入                 |
-| Base_Long_001_T          | T（transfer，config） |                          |
-| Base_Long_001_T          | T（transfer，config） |                          |
-| Base_Map_001_T           | T                     |                          |
-| Base_Queue_001_T         | T（transfer）         | 框架导入                 |
-| Base_Set_001_T           | T（transfer）         | 框架导入                 |
-| Base_String_001_T        | T                     |                          |
-| Base_StringArray_001_T   | T（transfer）         | 数组无法进行污染数组访问 |
-| Base_StringBuffer_001_T  | T（transfer）         |                          |
-| Base_StringBuilder_001_T | T（transfer）         |                          |
+| 测试文件                 | 测试结果              | 错误原因 |
+| ------------------------ | --------------------- | -------- |
+| Base_ArrayAccess_001_T   | T                     |          |
+| Base_ArrayAccess_002_T   | T                     |          |
+| Base_ArrayAccess_003_T   | T                     |          |
+| Base_ArrayAccess_004_T   | T                     |          |
+| Base_Byte_001_T          | T（transfer，config） |          |
+| Base_Byte_002_T          | T（transfer，config） |          |
+| Base_ByteArray_001_T     | T                     |          |
+| Base_Char_001_T          | T（transfer，config） |          |
+| Base_Char_002_T          | T（transfer，config） |          |
+| Base_CharArray_001_T     | T                     |          |
+| Base_Integer_001_T       | T（transfer）         |          |
+| Base_List_001_T          | T（transfer）         |          |
+| Base_Long_001_T          | T（transfer，config） |          |
+| Base_Long_001_T          | T（transfer，config） |          |
+| Base_Map_001_T           | T                     |          |
+| Base_Queue_001_T         | T（transfer）         |          |
+| Base_Set_001_T           | T（transfer）         |          |
+| Base_String_001_T        | T                     |          |
+| Base_StringArray_001_T   | T（transfer）         |          |
+| Base_StringBuffer_001_T  | T（transfer）         |          |
+| Base_StringBuilder_001_T | T（transfer）         |          |
 
 
 
-除去第三方库报错，共91个测试，其中7个失败，23个可以直接测， 61个需要transfer或修改原生配置
+共115个测试，其中12个失败，31个可以直接测， 72个需要transfer或修改原生配置
+
+失败样例：
+
++ 路径敏感、参数敏感（2）
++ 常量消毒（3）
++ 数组重组（1）
++ 容器（3）
++ 其他（3）
+  + issue
+  + 上下文不足
 
 
-
-失败的测试包含了2种情况：
-
-+ 常量的分支
-+ 常量赋值的sanitizer，新变量的sanitizer
 
 
 
