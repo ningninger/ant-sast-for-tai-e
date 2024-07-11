@@ -1,0 +1,4 @@
+sources:
+  - { kind: call, method: "<SourceUtil: java.lang.String getSource()>", index: result }
+sinks:
+  - { method: "<org.apache.http.impl.client.CloseableHttpClient: org.apache.http.client.methods.CloseableHttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>", index: 0 }

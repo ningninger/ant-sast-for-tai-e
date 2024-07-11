@@ -125,11 +125,11 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 |                 测试文件                  |   测试结果    |                           错误原因                           |
 | :---------------------------------------: | :-----------: | :----------------------------------------------------------: |
 | PropertyIsTaintOrNot_CharacterLevel_001_T | T（transfer） |                                                              |
-| PropertyIsTaintOrNot_CharacterLevel_001_T |       F       | 测试集要求字符串合并之后不是污点部分字符串取子串后仍然不是污点 |
+| PropertyIsTaintOrNot_CharacterLevel_002_F |       F       | 测试集要求字符串合并之后不是污点部分字符串取子串后仍然不是污点 |
 |      PropertyIsTaintOrNot_Map_001_T       | T（transfer） |                                                              |
 |      PropertyIsTaintOrNot_Map_002_F       |       F       |               对哈希表不同的键值拿出来应该不同               |
 |    PropertyIsTaintOrNot_MultiMap_001_T    | T（transfer） |                                                              |
-|    PropertyIsTaintOrNot_MultiMap_002_F    |       F       | 感觉不应该错啊，但是不知道为啥，后面用更严格的上下文来跑一下 |
+|    PropertyIsTaintOrNot_MultiMap_002_F    |       T       |                                                              |
 |     PropertyIsTaintOrNot_Object_001_T     |       T       |                                                              |
 |     PropertyIsTaintOrNot_Object_002_F     |       T       |                                                              |
 |  PropertyIsTaintOrNot_Queue_Lambda_001_T  |       T       |                                                              |
@@ -271,7 +271,7 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 
 
-共115个测试，其中10个失败，31个可以直接测， 74个需要transfer或修改原生配置
+共115个测试，其中9个失败，32个可以直接测， 74个需要transfer或修改原生配置
 
 失败样例：
 
@@ -279,10 +279,6 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 + 常量消毒（3）
 + 数组重组（1）
 + 容器（3）
-+ 其他（1）
-  + 上下文不足
-
-
 
 
 
