@@ -293,3 +293,11 @@ compose = !PropertyIsTaintOrNot_Map_002_F.java && PropertyIsTaintOrNot_Map_001_T
 
 
 
+## 结果
+
+| precision | soundness |
+| --------- | --------- |
+| 92.174%   | 98.387%   |
+
+> + precision = $\frac{(\text{标答为T且测试结果为T}\ +\ \text{标答为F且测试结果为F})}{总样本量}$
+> + soundness = $\frac{(标答为T的数量 \ - \ 漏报)}{所有标答为T的数量}$
